@@ -24,16 +24,18 @@ Los criterios para considerar un buen candidato son:
 
 ## Solución:
 ### Fuentes de datos:
-**Nuestras fuentes principales para la obtención de información fueron:**
-* **Fourquere:** API de consulta de establecimientos dada una ubicación GPS. [Link a su documentación](https://developer.foursquare.com/reference/place-search)
+**Nuestras fuentes principales para la obtención de información fueron:**       
+* **Fourquere:** API de consulta de establecimientos dada una ubicación GPS. [Link a su documentación](https://developer.foursquare.com/reference/place-search).        
 * **DENUE - INEGI (Mexico):** API de obtención de establecimientos con base en una categoría ubicada en un punto característico. [Link a su documentación](https://www.inegi.org.mx/servicios/api_denue.html)
-* **WIKIPEDIA:** Avenidas principales en la Ciudad de México. [Link de las avenidas](https://es.wikipedia.org/wiki/Categor%C3%ADa:Calles_de_Ciudad_de_M%C3%A9xico)
-### Adquisión de datos:
-1. **Obtener las avenidas principales en la Ciudad de México.** A través de una técnica llamada "webscraping", se realizó una llamada a la página web, una vez obtenida la página, descargaríamos la misma en un formato HTML, el resto fue utilizar la librería de Beatifoulsoup para navegar entre los nodos y obtener las avenidas principales de la ciudad de México.
-2. **Obtención de cordenas características de las avenidas:** Este proceso fue muy manual, a través de Google Maps realizamos la búsqueda de la avenida y obtuvimos las coordenadas GPS.
-3. **Creación de dataframes:**
-	* **Dataframe DENUE:** Dadas las coordenadas GPS que obtuvimos de cada avenida, decidimos buscar características especiales dentro de la base de datos de la DENUE como restaurantes, hoteles y comercios. Así creamos un dataframe de las avenidas con toda la información por categoría de los establecimientos que se encontraban en un radio de 5 km.
-	* **Dataframe Foursquare:** Una vez obtenido el dataframe de cada avenida, el resto era obtener una búsqueda de establecimientos generales en un radio de 1 km de esos establecimientos. Para ello usamos foursquere, pues nos permitía realizar la búsqueda de manera general.
+* **WIKIPEDIA:** Avenidas principales en la Ciudad de México. [Link de las avenidas](https://es.wikipedia.org/wiki/Categor%C3%ADa:Calles_de_Ciudad_de_M%C3%A9xico).       
+
+### Adquisión de datos:       
+1. **Obtener las avenidas principales en la Ciudad de México.** A través de una técnica llamada "webscraping", se realizó una llamada a la página web, una vez obtenida la página, descargaríamos la misma en un formato HTML, el resto fue utilizar la librería de Beatifoulsoup para navegar entre los nodos y obtener las avenidas principales de la ciudad de México.       
+2. **Obtención de cordenas características de las avenidas:** Este proceso fue muy manual, a través de Google Maps realizamos la búsqueda de la avenida y obtuvimos las coordenadas GPS.        
+3. **Creación de dataframes:**.         
+	* **Dataframe DENUE:** Dadas las coordenadas GPS que obtuvimos de cada avenida, decidimos buscar características especiales dentro de la base de datos de la DENUE como restaurantes, hoteles y comercios. Así creamos un dataframe de las avenidas con toda la información por categoría de los establecimientos que se encontraban en un radio de 5 km.          
+	* **Dataframe Foursquare:** Una vez obtenido el dataframe de cada avenida, el resto era obtener una búsqueda de establecimientos generales en un radio de 1 km de esos establecimientos. Para ello usamos foursquere, pues nos permitía realizar la búsqueda de manera general.        
+
 ### Tratando la información:
 Primeramente, la fuente los datos viajaban en formato JSON para ambas APIs, por lo que tuvimos que realizar una función de traducción y selección de llaves-valores para poder crear el dataframe que se requería. 
 
